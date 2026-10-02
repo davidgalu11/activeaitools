@@ -1,21 +1,61 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { SessionProvider } from "@/components/session-provider"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+})
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fafaf9" },
+    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
-  title: {
-    default: "ActiveAI Tools — Discover the Best AI Tools",
-    template: "%s | ActiveAI Tools",
-  },
+  metadataBase: new URL("https://activeaitools.com"),
+  title: "Active AI Tools — Independent Studio by David G",
   description:
-    "Browse, discover, and submit AI tools across every category. The modern directory for AI software.",
+    "Active AI Tools is an independent studio by David G, building tools for short-form content creators and writing about creator marketing.",
+  authors: [{ name: "David G", url: "https://activeaitools.com" }],
+  creator: "David G",
+  keywords: [
+    "Active AI Tools",
+    "David G",
+    "Creafico",
+    "short-form video",
+    "creator tools",
+    "creator marketing",
+    "Munich founder",
+  ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
-    siteName: "ActiveAI Tools",
+    locale: "en_US",
+    url: "https://activeaitools.com",
+    siteName: "Active AI Tools",
+    title: "Active AI Tools — Independent Studio by David G",
+    description:
+      "Active AI Tools is an independent studio by David G, building tools for short-form content creators and writing about creator marketing.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Active AI Tools — Independent Studio by David G",
+    description:
+      "Active AI Tools is an independent studio by David G, building tools for short-form content creators and writing about creator marketing.",
+  },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
   },
 }
 
@@ -25,16 +65,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
-      <body className="min-h-screen bg-background font-sans antialiased">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SessionProvider>{children}</SessionProvider>
-        </ThemeProvider>
+    <html lang="en" className={inter.variable}>
+      <body className="min-h-screen bg-background text-foreground font-sans antialiased selection:bg-neutral-200 dark:selection:bg-neutral-800">
+        {children}
       </body>
     </html>
   )

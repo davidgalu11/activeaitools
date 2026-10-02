@@ -1,16 +1,13 @@
 import type { MetadataRoute } from "next"
 
 export default function robots(): MetadataRoute.Robots {
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://activeaitools.com"
-
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/dashboard/", "/api/"],
       },
     ],
-    sitemap: `${appUrl}/sitemap.xml`,
+    sitemap: "https://activeaitools.com/sitemap.xml",
   }
 }

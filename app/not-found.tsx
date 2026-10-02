@@ -1,17 +1,24 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center text-center px-4">
-      <h1 className="text-6xl font-bold text-primary mb-4">404</h1>
-      <h2 className="text-2xl font-semibold mb-2">Page not found</h2>
-      <p className="text-muted-foreground mb-8 max-w-sm">
-        The page you&apos;re looking for doesn&apos;t exist or has been moved.
-      </p>
-      <Button asChild>
-        <Link href="/">Go home</Link>
-      </Button>
-    </div>
+    <main className="min-h-screen flex flex-col items-center justify-center text-center px-6">
+      <div className="space-y-4 max-w-sm">
+        <h1 className="text-4xl font-semibold tracking-tight text-foreground">
+          404
+        </h1>
+        <p className="text-sm text-muted-foreground">
+          The page you&apos;re looking for doesn&apos;t exist.
+        </p>
+        <div className="pt-2">
+          <Link
+            href="/"
+            className="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            Back to Active AI Tools
+          </Link>
+        </div>
+      </div>
+    </main>
   )
 }
